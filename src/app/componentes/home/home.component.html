@@ -1,6 +1,6 @@
-<h1 *ngIf="perfil=='Admin'"> Bienvenido administrador ng if</h1>
+<h1 *ngIf="usuario.perfil=='Admin'"> Bienvenido administrador ng if</h1>
 
-<h1 [hidden]="perfil=='Admin'">Bienvenido administrador hidden</h1>
+<h1 [hidden]="usuario.perfil=='Admin'">Bienvenido administrador hidden</h1>
 
 <p *ngFor="let item of lista">{{item.name}}</p>
 
