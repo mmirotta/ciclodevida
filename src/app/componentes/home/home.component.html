@@ -1,1 +1,13 @@
-<p>home works!</p>
+<h1 *ngIf="perfil=='Admin'"> Bienvenido administrador ng if</h1>
+
+<h1 [hidden]="perfil=='Admin'">Bienvenido administrador hidden</h1>
+
+<p *ngFor="let item of lista">{{item.name}}</p>
+
+<div *ngFor="let item of lista">
+    <span>Nombre: </span> {{item.name}}
+    <br>
+    <span>Perfil: </span> {{item.perfil}}
+</div>
+
+<button (click)="OcultarMostrar()">Ocultar/Mostrar</button>
