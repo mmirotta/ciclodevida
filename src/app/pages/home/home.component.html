@@ -1,0 +1,9 @@
+<div>
+    <app-grilla-usuarios [listadoUsuarios]="listadoPrincipal" (usuarioSeleccionado)="tomarUsuarioParaDetalles($event)"></app-grilla-usuarios>
+</div>
+<div>
+    <app-editor-usuario (usuarioCreado)="tomarUsuarioCreado($event)"></app-editor-usuario>
+</div>
+<div>
+    <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
+</div>

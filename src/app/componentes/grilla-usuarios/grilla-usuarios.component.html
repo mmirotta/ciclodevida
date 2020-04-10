@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of listadoUsuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.email}}</td>
+            <td><button type="button" class="btn btn-info btn-circle" (click)="mostrarDetalles(usuario)">Ver
+            </button></td>
+        </tr>
+    </tbody>
+</table>
