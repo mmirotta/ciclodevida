@@ -7,7 +7,10 @@ import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.compone
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './componentes/login/login.component';
 import { ErrorComponent } from './componentes/error/error.component';
-import { HomeComponent } from './componentes/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { EditorUsuarioComponent } from './componentes/editor-usuario/editor-usuario.component';
+import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
+import { GrillaUsuariosComponent } from './componentes/grilla-usuarios/grilla-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HomeComponent } from './componentes/home/home.component';
     BienvenidaComponent,
     LoginComponent,
     ErrorComponent,
-    HomeComponent
+    HomeComponent,
+    EditorUsuarioComponent,
+    DetalleUsuarioComponent,
+    GrillaUsuariosComponent
   ],
   imports: [
     BrowserModule,

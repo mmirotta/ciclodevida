@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     if (this.usuario.email === 'admin@mail.com' && this.usuario.pass === '1234') {
       // tiene que llevar a home
       this.usuario.perfil = 'Admin';
-      localStorage.setItem('usuario', String(this.usuario));
+      localStorage.setItem('usuario', JSON.stringify(this.usuario));
       this.route.navigate(['home']);
     } else {
       // tiene que llevar a Error
