@@ -1,11 +1,19 @@
-<h2>{{title}}</h2>
+<button (click)="menu = 1">Paises</button>
+<button (click)="menu = 2">Administrador</button>
 
-<div>
-    <app-grilla-usuarios [listadoUsuarios]="listadoPrincipal" (usuarioSeleccionado)="tomarUsuarioParaDetalles($event)"></app-grilla-usuarios>
+<div *ngIf="menu == 1">
+    <h1>Paises</h1>
 </div>
-<div>
-    <app-editor-usuario (usuarioCreado)="tomarUsuarioCreado($event)"></app-editor-usuario>
-</div>
-<div>
-    <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
+<div *ngIf="menu == 2">
+    <h2>{{title}}</h2>
+
+    <div>
+        <app-grilla-usuarios [listadoUsuarios]="listadoPrincipal" (usuarioSeleccionado)="tomarUsuarioParaDetalles($event)"></app-grilla-usuarios>
+    </div>
+    <div>
+        <app-editor-usuario (usuarioCreado)="tomarUsuarioCreado($event)"></app-editor-usuario>
+    </div>
+    <div>
+        <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
+    </div>
 </div>

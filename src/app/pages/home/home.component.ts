@@ -7,6 +7,7 @@ import { Usuario } from '../../clases/usuario';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  menu = 0;
   title = 'Administrador';
   usuario = new Usuario();
   listadoPrincipal: Usuario[];
@@ -30,4 +31,5 @@ export class HomeComponent implements OnInit {
   tomarUsuarioParaDetalles(nuevoUsuario: Usuario) {
     this.usuarioSeleccionado = nuevoUsuario;
   }
+
 }
