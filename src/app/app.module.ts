@@ -12,6 +12,15 @@ import { EditorUsuarioComponent } from './componentes/editor-usuario/editor-usua
 import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
 import { GrillaUsuariosComponent } from './componentes/grilla-usuarios/grilla-usuarios.component';
 
+// Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +35,14 @@ import { GrillaUsuariosComponent } from './componentes/grilla-usuarios/grilla-us
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

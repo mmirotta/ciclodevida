@@ -10,7 +10,7 @@ export class EditorUsuarioComponent implements OnInit {
 
   @Output() usuarioCreado: EventEmitter<any> = new EventEmitter<any>();
 
-  usuario: Usuario;
+  usuario: Usuario = new Usuario();
 
   constructor() {
   }

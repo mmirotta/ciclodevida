@@ -1,0 +1,27 @@
+.div-general {
+    display: flex;
+    height: 100%;
+}
+
+.div-imagen {
+    width: 70%;
+    background-image: url('../../../assets/background-login.png');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.div-formulario {
+    width: 30%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.example-full-width {
+    width: 100%;
+}

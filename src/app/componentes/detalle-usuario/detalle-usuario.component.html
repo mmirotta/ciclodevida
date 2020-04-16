@@ -1,13 +1,9 @@
-<div *ngIf="!usuarioParaMostrar">
-    <p> Seleccione un usuario </p>
+<div *ngIf="!usuarioParaMostrar" style="padding: 20px;">
+    <h1 style="text-align: center;">Detalle Usuario</h1>
+    <p style="text-align: center; margin-top: 10px;"> Seleccione un usuario </p>
 </div>
-<div *ngIf="usuarioParaMostrar">
-    <h2>{{usuarioParaMostrar.id}} </h2>
-    <div class="card" style="width:200px">
-        <div class="card-body">
-            <h4 class="card-title">{{usuarioParaMostrar.email}}</h4>
-            <p class="card-text">Perfil {{usuarioParaMostrar.perfil}}</p>
-            <a href="#" class="btn btn-danger">Borrar</a>
-        </div>
-    </div>
+<div *ngIf="usuarioParaMostrar" style="padding: 20px;">
+    <h1 style="text-align: center;">Detalle Usuario</h1>
+    <h4 style="text-align: center;">{{usuarioParaMostrar.email}}</h4>
+    <p style="text-align: center;">Perfil {{usuarioParaMostrar.perfil}}</p>
 </div>

@@ -11,6 +11,9 @@ export class GrillaUsuariosComponent implements OnInit {
   @Input() listadoUsuarios: Usuario[] ;
   @Output() usuarioSeleccionado: EventEmitter<any> = new EventEmitter<any>();
 
+  displayedColumns: string[] = ['id', 'email'];
+  dataSource = this.listadoUsuarios;
+
   constructor() {
   }
 

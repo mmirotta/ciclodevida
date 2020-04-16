@@ -1,16 +1,16 @@
-<div *ngIf="!usuario">
-    <button class="btn btn-lg btn-warning btn-block" (click)="NuevoUsuario()">Nuevo </button>
-</div>
-<div *ngIf="usuario">
-    <div>
-        <label>Email:
-            <input [(ngModel)]="usuario.email" placeholder="email">
-        </label>
+<div style="padding: 20px;">
+    <div class="div-formulario">
+        <h1 style="text-align: center;">Nuevo Usuario</h1>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="usuario@email.com" [(ngModel)]="usuario.email">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Clave</mat-label>
+            <input matInput type="password" [(ngModel)]="usuario.pass">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" (click)="CrearUsuario()" style="width: 100%;">Crear</button>
     </div>
-    <div>
-        <label>Password:
-            <input [(ngModel)]="usuario.pass" type="password">
-        </label>
-    </div>
-    <button class="btn btn-lg btn-success btn-block" (click)="CrearUsuario()">Crear</button>
 </div>

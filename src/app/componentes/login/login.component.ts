@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router) { }
 
   ngOnInit() {
+    this.usuario.email = 'admin@mail.com';
+    this.usuario.pass = '1234';
   }
 
   Ingresar() {

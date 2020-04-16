@@ -1,19 +1,39 @@
-<button (click)="menu = 1">Paises</button>
-<button (click)="menu = 2">Administrador</button>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>{{title}}</span>
+    </mat-toolbar-row>
+</mat-toolbar>
 
+<div class="div-cards" *ngIf="menu == 0">
+    <mat-card class="example-card" (click)="Acceder(1)">
+        <img mat-card-image src="../../../assets/paises.png" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <h1 style="text-align: center;">Paises</h1>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card" (click)="Acceder(2)">
+        <img mat-card-image src="../../../assets/administrador.png" alt="Administrador">
+        <mat-card-content>
+            <h1 style="text-align: center;">Administrador</h1>
+        </mat-card-content>
+    </mat-card>
+</div>
 <div *ngIf="menu == 1">
     <h1>Paises</h1>
 </div>
 <div *ngIf="menu == 2">
-    <h2>{{title}}</h2>
-
-    <div>
-        <app-grilla-usuarios [listadoUsuarios]="listadoPrincipal" (usuarioSeleccionado)="tomarUsuarioParaDetalles($event)"></app-grilla-usuarios>
-    </div>
-    <div>
-        <app-editor-usuario (usuarioCreado)="tomarUsuarioCreado($event)"></app-editor-usuario>
-    </div>
-    <div>
-        <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
+    <div class="div-general-administrador">
+        <div class="div-listado">
+            <app-grilla-usuarios [listadoUsuarios]="listadoPrincipal" (usuarioSeleccionado)="tomarUsuarioParaDetalles($event)"></app-grilla-usuarios>
+        </div>
+        <div class="div-usuario">
+            <div class="mat-elevation-z8">
+                <app-editor-usuario (usuarioCreado)="tomarUsuarioCreado($event)"></app-editor-usuario>
+            </div>
+            <div class="mat-elevation-z8" style="margin-top: 20px;">
+                <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
+            </div>
+        </div>
     </div>
 </div>

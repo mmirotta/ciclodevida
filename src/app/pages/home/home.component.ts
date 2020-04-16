@@ -8,7 +8,7 @@ import { Usuario } from '../../clases/usuario';
 })
 export class HomeComponent implements OnInit {
   menu = 0;
-  title = 'Administrador';
+  title = 'Home';
   usuario = new Usuario();
   listadoPrincipal: Usuario[];
   usuarioSeleccionado: Usuario;
@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit {
 
   tomarUsuarioParaDetalles(nuevoUsuario: Usuario) {
     this.usuarioSeleccionado = nuevoUsuario;
+  }
+
+  Acceder(opcion) {
+    this.menu = opcion;
+    this.title = opcion === 1 ? 'Paises' : 'Administrador';
   }
 
 }
