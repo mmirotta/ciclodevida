@@ -20,6 +20,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import { MiservicioService } from './servicios/miservicio.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatCardModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MiservicioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../clases/usuario';
+import { MiservicioService } from '../../servicios/miservicio.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   listadoPrincipal: Usuario[];
   usuarioSeleccionado: Usuario;
 
-  constructor() {
+  constructor(private miservicio: MiservicioService) {
     this.listadoPrincipal = [
       { email: 'admin@mail.com' , pass: '1234', id: 1, perfil: 'admin' },
       { email: 'usuario@mail.com' , pass: 'rogelio', id: 3, perfil: 'usuario' },
@@ -22,6 +23,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    this.miservicio.obtenerPaises().subscribe(resultado => {
+      console.log('console log dentro del observable');
+      console.log(resultado);
+    }, error => {
+      console.log('Error');
+    });
+
+    console.log('console log despues del observable');
   }
 
   tomarUsuarioCreado(nuevoUsuario: Usuario) {
