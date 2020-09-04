@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 })
 export class MiservicioService {
   private url = environment.urlpaises;
+  public usuario;
   constructor(private http: HttpClient) { }
 
   public obtenerPaises() {

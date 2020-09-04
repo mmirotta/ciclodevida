@@ -22,6 +22,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { MiservicioService } from './servicios/miservicio.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GrillaPaisesComponent } from './componentes/grilla-paises/grilla-paises.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     EditorUsuarioComponent,
     DetalleUsuarioComponent,
-    GrillaUsuariosComponent
+    GrillaUsuariosComponent,
+    GrillaPaisesComponent
   ],
   imports: [
     BrowserModule,

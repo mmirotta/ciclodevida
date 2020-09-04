@@ -23,15 +23,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.miservicio.usuario);
 
-    this.miservicio.obtenerPaises().subscribe(resultado => {
-      console.log('console log dentro del observable');
-      console.log(resultado);
-    }, error => {
-      console.log('Error');
-    });
-
-    console.log('console log despues del observable');
   }
 
   tomarUsuarioCreado(nuevoUsuario: Usuario) {

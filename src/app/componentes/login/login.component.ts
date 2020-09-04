@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../clases/usuario';
 import { Router } from '@angular/router';
+import { MiservicioService } from '../../servicios/miservicio.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   usuario = new Usuario();
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private miservicio: MiservicioService) { }
 
   ngOnInit() {
     this.usuario.email = 'admin@mail.com';
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
       // tiene que llevar a home
       this.usuario.perfil = 'Admin';
       localStorage.setItem('usuario', JSON.stringify(this.usuario));
+      this.miservicio.usuario = this.usuario;
       this.route.navigate(['home']);
     } else {
       // tiene que llevar a Error
