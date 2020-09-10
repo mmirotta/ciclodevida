@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  urlpaises: 'https://restcountries.eu/rest/v2/'
+  urlpaises: 'https://restcountries.eu/rest/v2/',
+  firebase: {
+    apiKey: 'AIzaSyBBO1JK97QleqEzVJVjS2jT4_tpKLeyYxw',
+    authDomain: 'ciclodevida-a398c.firebaseapp.com',
+    databaseURL: 'https://ciclodevida-a398c.firebaseio.com',
+    projectId: 'ciclodevida-a398c',
+    storageBucket: 'ciclodevida-a398c.appspot.com',
+    messagingSenderId: '20609190215',
+  }
 };
 
 /*

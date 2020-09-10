@@ -24,6 +24,12 @@ import { MiservicioService } from './servicios/miservicio.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GrillaPaisesComponent } from './componentes/grilla-paises/grilla-paises.component';
 
+// FIREBASE
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -48,9 +54,13 @@ import { GrillaPaisesComponent } from './componentes/grilla-paises/grilla-paises
     MatCardModule,
     MatTableModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule
   ],
-  providers: [MiservicioService],
+  providers: [MiservicioService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

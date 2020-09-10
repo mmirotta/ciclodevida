@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../clases/usuario';
 import { Router } from '@angular/router';
 import { MiservicioService } from '../../servicios/miservicio.service';
+import { AuthService } from '../../servicios/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -12,16 +15,40 @@ export class LoginComponent implements OnInit {
 
   usuario = new Usuario();
 
-  constructor(private route: Router, private miservicio: MiservicioService) { }
+  constructor(private route: Router,
+              private miservicio: MiservicioService,
+              private authService: AuthService,
+              private db: AngularFirestore) { }
 
   ngOnInit() {
     this.usuario.email = 'admin@mail.com';
-    this.usuario.pass = '1234';
+    this.usuario.pass = '123456';
   }
 
   Ingresar() {
     console.log(this.usuario);
 
+    this.authService.signIn(this.usuario).then(res => {
+      console.log('Login exitoso', res);
+
+      this.db.collection('logusuarios').add({
+          email: this.usuario.email,
+          fechaacceso: firestore.Timestamp.fromDate(new Date())
+      })
+      .then(docRef => {
+        localStorage.setItem('usuario', JSON.stringify(this.usuario));
+        this.miservicio.usuario = this.usuario;
+        this.route.navigate(['home']);
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch(error => {
+          console.error('Error adding document: ', error);
+      });
+    }).catch(error => {
+      console.log('Login error: ', error);
+      this.route.navigate(['error']);
+    });
+  /*
     if (this.usuario.email === 'admin@mail.com' && this.usuario.pass === '1234') {
       // tiene que llevar a home
       this.usuario.perfil = 'Admin';
@@ -32,7 +59,30 @@ export class LoginComponent implements OnInit {
       // tiene que llevar a Error
       this.route.navigate(['error']);
     }
+    */
 
+  }
+
+  Registrar() {
+    console.log(this.usuario);
+    this.authService.register(this.usuario).then(res => {
+      console.log('Registro exitoso', res);
+      this.db.collection('usuarios').add({
+          email: this.usuario.email
+      })
+      .then(docRef => {
+        localStorage.setItem('usuario', JSON.stringify(this.usuario));
+        this.miservicio.usuario = this.usuario;
+        this.route.navigate(['home']);
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch(error => {
+          console.error('Error adding document: ', error);
+      });
+    }).catch(error => {
+      console.log('Registro error: ', error);
+      this.route.navigate(['error']);
+    });
   }
 
 }
