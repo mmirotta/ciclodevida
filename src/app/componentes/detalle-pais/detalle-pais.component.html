@@ -1,0 +1,10 @@
+<div *ngIf="!pais" style="padding: 20px;">
+    <h1 style="text-align: center;">Detalle País</h1>
+    <p style="text-align: center; margin-top: 10px;"> Seleccione un país </p>
+</div>
+<div *ngIf="pais" style="padding: 20px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+    <h1 style="text-align: center;">Detalle País</h1>
+    <h4 style="text-align: center;">{{pais.name}}</h4>
+    <p style="text-align: center;">Región {{pais.region}}</p>
+    <img [src]="pais.flag" alt="" style="width: 60%; height: 60%">
+</div>
