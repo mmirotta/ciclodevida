@@ -30,6 +30,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
     EditorUsuarioComponent,
     DetalleUsuarioComponent,
     GrillaUsuariosComponent,
-    GrillaPaisesComponent
+    GrillaPaisesComponent,
+    DetallePaisComponent
   ],
   imports: [
     BrowserModule,

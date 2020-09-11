@@ -13,4 +13,8 @@ export class MiservicioService {
   public obtenerPaises() {
     return this.http.get(this.url);
   }
+
+  public obtenerUsuariosMocki() {
+    return this.http.get('https://api.mocki.io/v1/570c5e5c');
+  }
 }

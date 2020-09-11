@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <span>{{title}}</span>
+    <span (click)="menu=0; title='Home'" style="cursor: pointer;">{{title}}</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon" aria-label="Salir" (click)="Salir()">
         <mat-icon>exit_to_app</mat-icon>
@@ -24,7 +24,12 @@
 <div *ngIf="menu == 1">
     <div class="div-general-administrador">
         <div class="div-listado">
-            <app-grilla-paises></app-grilla-paises>
+            <app-grilla-paises [listadoPaises]="listadoPaises" (emitirverpais)="paisSeleccionado($event)"></app-grilla-paises>
+        </div>
+        <div class="div-usuario">
+            <div class="mat-elevation-z8">
+                <app-detalle-pais [pais]="paisseleccionado"></app-detalle-pais>
+            </div>
         </div>
     </div>
 </div>

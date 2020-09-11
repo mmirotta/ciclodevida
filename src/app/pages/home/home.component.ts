@@ -4,6 +4,7 @@ import { MiservicioService } from '../../servicios/miservicio.service';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Pais } from '../../clases/pais';
 
 @Component({
   selector: 'app-home',
@@ -15,32 +16,32 @@ export class HomeComponent implements OnInit {
   title = 'Home';
   usuario = new Usuario();
   listadoPrincipal: Usuario[];
+  listadoUsuarios: Usuario[] = [];
   usuarioSeleccionado: Usuario;
+  listadoPaises = [];
+  paisseleccionado: Pais;
 
   constructor(private miservicio: MiservicioService,
               private authService: AuthService,
               private route: Router,
               private db: AngularFirestore) {
     this.listadoPrincipal = [
-      { email: 'admin@mail.com' , pass: '1234', id: 1, perfil: 'admin' },
-      { email: 'usuario@mail.com' , pass: 'rogelio', id: 3, perfil: 'usuario' },
+      { email: 'admin@mail.com' , pass: '1234', id: 1, perfil: 'admin', nombre: 'admin' },
+      { email: 'usuario@mail.com' , pass: 'rogelio', id: 3, perfil: 'usuario', nombre: 'usuario' },
     ];
    }
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.miservicio.usuario);
-    // Obtengo solo los datos una vez cuando carga el componente
-    this.db.collection('usuarios').get().subscribe((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            this.listadoPrincipal.push( doc.data() as Usuario);
-        });
-    });
+    this.obtenerUsuario();
 
-    // Obtengo solo los datos una vez cuando carga el componente de forma diferente
-    const coleccionlogueos = this.db.collection('logusuarios').valueChanges();
-    coleccionlogueos.subscribe(lista => {
-      console.log('Listado logs: ', lista);
+    this.miservicio.obtenerPaises().subscribe((paises: any) => {
+      console.log(paises);
+      console.log('console log dentro del observable');
+      this.listadoPaises = paises;
+    }, error => {
+      console.log('Error');
     });
   }
 
@@ -67,6 +68,28 @@ export class HomeComponent implements OnInit {
       console.log('Login error: ', error);
       this.route.navigate(['error']);
     });
+  }
+
+  private obtenerUsuario() {
+    // Obtengo solo los datos una vez cuando carga el componente
+    this.db.collection('usuarios').get().subscribe((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          this.listadoUsuarios.push( doc.data() as Usuario);
+      });
+      console.log('Listado usuarios firebase: ', this.listadoUsuarios);
+    });
+
+    // Obtengo solo los datos una vez cuando carga el componente de forma diferente
+    const coleccionlogueos = this.db.collection('logusuarios').valueChanges();
+    coleccionlogueos.subscribe(lista => {
+      console.log('Listado logs: ', lista);
+    });
+  }
+
+
+  paisSeleccionado(pais) {
+    console.log(pais);
+    this.paisseleccionado = pais;
   }
 
 }

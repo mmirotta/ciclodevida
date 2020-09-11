@@ -14,6 +14,7 @@ import { firestore } from 'firebase';
 export class LoginComponent implements OnInit {
 
   usuario = new Usuario();
+  registro = false;
 
   constructor(private route: Router,
               private miservicio: MiservicioService,
@@ -31,9 +32,10 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(this.usuario).then(res => {
       console.log('Login exitoso', res);
 
-      this.db.collection('logusuarios').add({
+      this.db.collection('pruebas').add({
           email: this.usuario.email,
-          fechaacceso: firestore.Timestamp.fromDate(new Date())
+          fechaacceso: firestore.Timestamp.fromDate(new Date()),
+          dato: 'dato de prueba'
       })
       .then(docRef => {
         localStorage.setItem('usuario', JSON.stringify(this.usuario));
@@ -68,7 +70,8 @@ export class LoginComponent implements OnInit {
     this.authService.register(this.usuario).then(res => {
       console.log('Registro exitoso', res);
       this.db.collection('usuarios').add({
-          email: this.usuario.email
+          email: this.usuario.email,
+          nombre: this.usuario.nombre
       })
       .then(docRef => {
         localStorage.setItem('usuario', JSON.stringify(this.usuario));

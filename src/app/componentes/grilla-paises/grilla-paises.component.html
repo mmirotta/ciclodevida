@@ -4,14 +4,20 @@
             <th style="text-align: left;">Nombre</th>
             <th style="text-align: left;">Región</th>
             <th style="text-align: left;">Bandera</th>
+            <th style="text-align: left;"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pais of listadoPaises">
             <td style="width: 30%;">{{pais.name}}</td>
             <td style="width: 30%;">{{pais.region}}</td>
-            <td style="width: 40%;">
+            <td style="width: 20%;">
                 <img [src]="pais.flag" alt="" style="width: 50px; height: 50px;">
+            </td>
+            <td style="width: 20%;">
+                <button mat-icon-button color="primary" (click)="VerPais(pais)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
             </td>
         </tr>
     </tbody>
