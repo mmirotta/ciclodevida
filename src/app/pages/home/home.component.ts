@@ -60,7 +60,8 @@ export class HomeComponent implements OnInit {
 
   Salir() {
     this.authService.signOut().then(res => {
-      console.log('Login exitoso', res);
+      console.log('Logout exitoso', res);
+      this.authService.isLoggedIn = false;
       localStorage.setItem('usuario', JSON.stringify(this.usuario));
       this.miservicio.usuario = this.usuario;
       this.route.navigate(['login']);

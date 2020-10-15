@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.signIn(this.usuario).then(res => {
       console.log('Login exitoso', res);
+      this.authService.isLoggedIn = true;
 
       this.db.collection('pruebas').add({
           email: this.usuario.email,
@@ -50,18 +51,6 @@ export class LoginComponent implements OnInit {
       console.log('Login error: ', error);
       this.route.navigate(['error']);
     });
-  /*
-    if (this.usuario.email === 'admin@mail.com' && this.usuario.pass === '1234') {
-      // tiene que llevar a home
-      this.usuario.perfil = 'Admin';
-      localStorage.setItem('usuario', JSON.stringify(this.usuario));
-      this.miservicio.usuario = this.usuario;
-      this.route.navigate(['home']);
-    } else {
-      // tiene que llevar a Error
-      this.route.navigate(['error']);
-    }
-    */
 
   }
 
@@ -69,6 +58,7 @@ export class LoginComponent implements OnInit {
     console.log(this.usuario);
     this.authService.register(this.usuario).then(res => {
       console.log('Registro exitoso', res);
+      this.authService.isLoggedIn = true;
       this.db.collection('usuarios').add({
           email: this.usuario.email,
           nombre: this.usuario.nombre

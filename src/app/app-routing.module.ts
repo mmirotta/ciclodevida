@@ -4,12 +4,14 @@ import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.compone
 import { ErrorComponent } from './componentes/error/error.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthGuard } from './servicios/auth.guard';
 
 
 const routes: Routes = [
   {path: '', component: BienvenidaComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard]},
   {path: '**', component: ErrorComponent}
 ];
 
