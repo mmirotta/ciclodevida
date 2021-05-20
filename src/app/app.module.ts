@@ -31,6 +31,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
+import { ResaltarDirective } from './directivas/resaltar.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.co
     DetalleUsuarioComponent,
     GrillaUsuariosComponent,
     GrillaPaisesComponent,
-    DetallePaisComponent
+    DetallePaisComponent,
+    ResaltarDirective
   ],
   imports: [
     BrowserModule,
