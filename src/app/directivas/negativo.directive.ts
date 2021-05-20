@@ -4,19 +4,16 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
   selector: '[appNegativo]'
 })
 export class NegativoDirective {
-  private vista = false;
 
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef) { }
 
   @Input() set appNegativo(condicion: boolean) {
-    if (!condicion && !this.vista) {
+    if (!condicion) {
       this.viewContainer.createEmbeddedView(this.templateRef);
-      this.vista = true;
-    } else if (condicion && this.vista) {
+    } else if (condicion) {
       this.viewContainer.clear();
-      this.vista = false;
     }
   }
 

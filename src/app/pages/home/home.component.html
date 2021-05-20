@@ -86,20 +86,6 @@
             <p *appNegativo="!condicion" class="unless b">
                 (B) Aunque la condición es verdadera, este párrafo se muestra porque appNegativo está establecido en falso.
             </p>
-
-            <h4>NegativoDirective con template </h4>
-
-            <p *appNegativo="condicion">Show this sentence unless the condicion is true.</p>
-
-            <p *appNegativo="condicion" class="code unless">
-                (A) &lt;p *appNegativo="condicion" class="code unless"&gt;
-            </p>
-
-            <ng-template [appNegativo]="condicion">
-                <p class="code unless">
-                    (A) &lt;ng-template [appNegativo]="condicion"&gt;
-                </p>
-            </ng-template>
         </div>
     </div>
 </div>
