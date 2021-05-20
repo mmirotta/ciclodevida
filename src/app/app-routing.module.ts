@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.component';
+import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 import { ErrorComponent } from './componentes/error/error.component';
-import { LoginComponent } from './componentes/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './servicios/auth.guard';
 

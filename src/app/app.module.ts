@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.component';
+import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './componentes/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditorUsuarioComponent } from './componentes/editor-usuario/editor-usuario.component';
@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { ResaltarDirective } from './directivas/resaltar.directive';
+import { NegativoDirective } from './directivas/negativo.directive';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ResaltarDirective } from './directivas/resaltar.directive';
     GrillaUsuariosComponent,
     GrillaPaisesComponent,
     DetallePaisComponent,
-    ResaltarDirective
+    ResaltarDirective,
+    NegativoDirective
   ],
   imports: [
     BrowserModule,

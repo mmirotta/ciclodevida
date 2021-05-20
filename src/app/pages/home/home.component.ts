@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   usuarioSeleccionado: Usuario;
   listadoPaises = [];
   paisseleccionado: Pais;
+  color;
+  condicion = false;
 
   constructor(private miservicio: MiservicioService,
               private authService: AuthService,
@@ -55,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   Acceder(opcion) {
     this.menu = opcion;
-    this.title = opcion === 1 ? 'Paises' : 'Administrador';
+    this.title = opcion === 1 ? 'Paises' : opcion === 2 ? 'Administrador' : 'Directivas';
   }
 
   Salir() {

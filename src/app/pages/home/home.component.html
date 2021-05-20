@@ -20,6 +20,12 @@
             <h1 style="text-align: center;">Administrador</h1>
         </mat-card-content>
     </mat-card>
+    <mat-card class="example-card" (click)="Acceder(3)">
+        <img mat-card-image src="../../../assets/directivas.png" alt="Directivas">
+        <mat-card-content>
+            <h1 style="text-align: center;">Directivas</h1>
+        </mat-card-content>
+    </mat-card>
 </div>
 <div *ngIf="menu == 1">
     <div class="div-general-administrador">
@@ -45,6 +51,39 @@
             <div class="mat-elevation-z8" style="margin-top: 20px;">
                 <app-detalle-usuario [usuarioParaMostrar]="usuarioSeleccionado"></app-detalle-usuario>
             </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="menu == 3">
+    <div class="div-general-administrador">
+        <div class="div-listado">
+            <h1>Attribute directives</h1>
+            <h3>Resaltar un texto</h3>
+            <div>
+                <input type="radio" name="colors" (click)="color='lightgreen'">Verde
+                <input type="radio" name="colors" (click)="color='yellow'">Amarrillo
+                <input type="radio" name="colors" (click)="color='blue'">Azul
+            </div>
+            <p [appResaltar]="color">Este texto va a cambiar de color si pasar el mouse por arriba!</p>
+
+        </div>
+        <div class="div-usuario">
+            <h4>Writing structural directives</h4>
+            <p>
+                La condición es actualmente
+                <span [ngClass]="{ 'a': !condicion, 'b': condicion, 'negativo': true }">{{condicion}}</span>.
+                <button (click)="condicion = !condicion" [ngClass]="{ 'a': condicion, 'b': !condicion }">
+                    Cambiar condición a {{condicion ? 'false' : 'true'}}
+                </button>
+            </p>
+            <p *appNegativo="condicion" class="negativo a">
+                (A) Este párrafo se muestra porque la condición es falsa.
+            </p>
+
+            <p *appNegativo="!condicion" class="negativo b">
+                (B) Aunque la condición es verdadera, este párrafo se muestra porque appNegativo está establecido en falso.
+            </p>
         </div>
     </div>
 </div>
