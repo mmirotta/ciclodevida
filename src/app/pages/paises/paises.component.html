@@ -1,0 +1,10 @@
+<div class="div-general-administrador">
+    <div class="div-listado">
+        <app-grilla-paises [listadoPaises]="listadoPaises" (emitirverpais)="paisSeleccionado($event)"></app-grilla-paises>
+    </div>
+    <div class="div-usuario">
+        <div class="mat-elevation-z8">
+            <app-detalle-pais [pais]="paisseleccionado"></app-detalle-pais>
+        </div>
+    </div>
+</div>

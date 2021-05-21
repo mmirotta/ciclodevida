@@ -18,8 +18,7 @@ export class HomeComponent implements OnInit {
   listadoPrincipal: Usuario[];
   listadoUsuarios: Usuario[] = [];
   usuarioSeleccionado: Usuario;
-  listadoPaises = [];
-  paisseleccionado: Pais;
+
   color;
   condicion = false;
 
@@ -35,16 +34,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.miservicio.usuario);
     this.obtenerUsuario();
 
-    this.miservicio.obtenerPaises().subscribe((paises: any) => {
-      console.log(paises);
-      console.log('console log dentro del observable');
-      this.listadoPaises = paises;
-    }, error => {
-      console.log('Error');
-    });
   }
 
   tomarUsuarioCreado(nuevoUsuario: Usuario) {
@@ -89,10 +80,5 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-  paisSeleccionado(pais) {
-    console.log(pais);
-    this.paisseleccionado = pais;
-  }
 
 }

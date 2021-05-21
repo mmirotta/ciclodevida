@@ -33,6 +33,7 @@ import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { ResaltarDirective } from './directivas/resaltar.directive';
 import { NegativoDirective } from './directivas/negativo.directive';
+import { PaisesComponent } from './pages/paises/paises.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NegativoDirective } from './directivas/negativo.directive';
     GrillaPaisesComponent,
     DetallePaisComponent,
     ResaltarDirective,
-    NegativoDirective
+    NegativoDirective,
+    PaisesComponent
   ],
   imports: [
     BrowserModule,
