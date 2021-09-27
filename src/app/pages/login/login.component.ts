@@ -3,8 +3,8 @@ import { Usuario } from '../../clases/usuario';
 import { Router } from '@angular/router';
 import { MiservicioService } from '../../servicios/miservicio.service';
 import { AuthService } from '../../servicios/auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import  firestore  from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
       this.db.collection('pruebas').add({
           email: this.usuario.email,
-          fechaacceso: firestore.Timestamp.fromDate(new Date()),
+          fechaacceso: firestore.firestore.Timestamp.fromDate(new Date()),
           dato: 'dato de prueba'
       })
       .then(docRef => {

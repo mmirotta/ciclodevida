@@ -12,12 +12,13 @@ export class GrillaUsuariosComponent implements OnInit {
   @Output() usuarioSeleccionado: EventEmitter<any> = new EventEmitter<any>();
 
   displayedColumns: string[] = ['id', 'email'];
-  dataSource = this.listadoUsuarios;
+  dataSource = [];
 
   constructor() {
   }
 
   ngOnInit() {
+    this.dataSource = this.listadoUsuarios;
   }
 
   mostrarDetalles(usuario: Usuario) {

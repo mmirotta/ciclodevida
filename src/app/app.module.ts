@@ -25,10 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { GrillaPaisesComponent } from './componentes/grilla-paises/grilla-paises.component';
 
 // FIREBASE
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { ResaltarDirective } from './directivas/resaltar.directive';

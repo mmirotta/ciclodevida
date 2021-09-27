@@ -3,7 +3,7 @@ import { Usuario } from '../../clases/usuario';
 import { MiservicioService } from '../../servicios/miservicio.service';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Pais } from '../../clases/pais';
 
 @Component({

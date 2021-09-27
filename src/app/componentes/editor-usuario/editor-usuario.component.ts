@@ -18,16 +18,11 @@ export class EditorUsuarioComponent implements OnInit {
   ngOnInit() {
   }
 
-  NuevoUsuario() {
-    const id: number = Math.floor((Math.random() * 1) + 1);
-    this.usuario = new Usuario();
-    this.usuario.id = id;
-
-  }
-
   CrearUsuario() {
+    const id: number = Math.floor((Math.random() * 1) + 1);
+    this.usuario.id = id;
     this.usuarioCreado.emit(this.usuario);
-    this.usuario = null;
+    this.usuario = new Usuario();
   }
 
 }

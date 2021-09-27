@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../clases/usuario';
 
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 
@@ -12,6 +12,7 @@ export class AuthService {
   isLoggedIn = false;
   redirectUrl: string;
 
+  
   constructor(private afAuth: AngularFireAuth,
               private router: Router) { }
 
