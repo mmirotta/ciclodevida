@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { GrillaUsuariosComponent } from './grilla-usuarios.component';
 
@@ -6,7 +6,7 @@ describe('GrillaUsuariosComponent', () => {
   let component: GrillaUsuariosComponent;
   let fixture: ComponentFixture<GrillaUsuariosComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GrillaUsuariosComponent ]
     })
