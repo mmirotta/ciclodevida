@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { FileInputComponent } from 'ngx-material-file-input';
 import { Usuario } from '../../clases/usuario';
 
 @Component({
@@ -7,6 +8,7 @@ import { Usuario } from '../../clases/usuario';
   styleUrls: ['./editor-usuario.component.css']
 })
 export class EditorUsuarioComponent implements OnInit {
+  @ViewChild('inputFile') inputFile: FileInputComponent;
 
   @Output() usuarioCreado: EventEmitter<any> = new EventEmitter<any>();
 
@@ -19,10 +21,22 @@ export class EditorUsuarioComponent implements OnInit {
   }
 
   CrearUsuario() {
-    const id: number = Math.floor((Math.random() * 1) + 1);
+    const id: number = this.GenerarId(1, 1000);
+    console.log({id});
     this.usuario.id = id;
     this.usuarioCreado.emit(this.usuario);
+
+    // Limpio formulario
     this.usuario = new Usuario();
+    this.inputFile.clear();
+  }
+
+  CambioArchivo(event) {
+    this.usuario.foto = event.target.files[0];
+  }
+
+  GenerarId(min, max){
+    return Math.round(Math.random() * (max - min) + min);
   }
 
 }

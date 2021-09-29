@@ -1,9 +1,10 @@
+import { StorageService } from './../../servicios/storage.service';
+import { UsuariosService } from './../../servicios/usuarios.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../clases/usuario';
 import { MiservicioService } from '../../servicios/miservicio.service';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Pais } from '../../clases/pais';
 
 @Component({
@@ -15,8 +16,7 @@ export class HomeComponent implements OnInit {
   menu = 0;
   title = 'Home';
   usuario = new Usuario();
-  listadoPrincipal: Usuario[];
-  listadoUsuarios: Usuario[] = [];
+  listadoUsuarios = [];
   usuarioSeleccionado: Usuario;
   listadoPaises = [];
   paisseleccionado: Pais;
@@ -26,17 +26,13 @@ export class HomeComponent implements OnInit {
   constructor(private miservicio: MiservicioService,
               private authService: AuthService,
               private route: Router,
-              private db: AngularFirestore) {
-    this.listadoPrincipal = [
-      { email: 'admin@mail.com' , pass: '1234', id: 1, perfil: 'admin', nombre: 'admin' },
-      { email: 'usuario@mail.com' , pass: 'rogelio', id: 3, perfil: 'usuario', nombre: 'usuario' },
-    ];
-   }
+              private usuarioService: UsuariosService,
+              private storageService: StorageService) {}
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.miservicio.usuario);
-    this.obtenerUsuario();
+    this.obtenerUsuarios();
 
     this.miservicio.obtenerPaises().subscribe((paises: any) => {
       console.log(paises);
@@ -47,8 +43,25 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  tomarUsuarioCreado(nuevoUsuario: Usuario) {
-    this.listadoPrincipal.push(nuevoUsuario);
+  obtenerUsuarios() {
+    this.usuarioService.obtenerUsuarios().subscribe(
+      data => this.listadoUsuarios = data
+    );
+  }
+
+  async tomarUsuarioCreado(nuevoUsuario: Usuario) {
+    try {
+      // Subir archivo
+      const tarea = await this.storageService.tareaCloudStorage(nuevoUsuario.id.toString(), nuevoUsuario.foto);
+      nuevoUsuario.foto = await tarea.ref.getDownloadURL();
+  
+      // Registrar usuario
+      await this.authService.register(nuevoUsuario);
+      await this.usuarioService.crearUsuario(nuevoUsuario);
+
+    } catch(error) {
+      console.log("Se produjo un error: ", error);
+    }
   }
 
   tomarUsuarioParaDetalles(nuevoUsuario: Usuario) {
@@ -72,23 +85,6 @@ export class HomeComponent implements OnInit {
       this.route.navigate(['error']);
     });
   }
-
-  private obtenerUsuario() {
-    // Obtengo solo los datos una vez cuando carga el componente
-    this.db.collection('usuarios').get().subscribe((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          this.listadoUsuarios.push( doc.data() as Usuario);
-      });
-      console.log('Listado usuarios firebase: ', this.listadoUsuarios);
-    });
-
-    // Obtengo solo los datos una vez cuando carga el componente de forma diferente
-    const coleccionlogueos = this.db.collection('logusuarios').valueChanges();
-    coleccionlogueos.subscribe(lista => {
-      console.log('Listado logs: ', lista);
-    });
-  }
-
 
   paisSeleccionado(pais) {
     console.log(pais);

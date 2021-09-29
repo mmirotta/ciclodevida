@@ -33,6 +33,7 @@ import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { ResaltarDirective } from './directivas/resaltar.directive';
 import { NegativoDirective } from './directivas/negativo.directive';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { NegativoDirective } from './directivas/negativo.directive';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MaterialFileInputModule // Input file
   ],
   providers: [MiservicioService, ],
   bootstrap: [AppComponent]
