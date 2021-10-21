@@ -8,17 +8,17 @@ import { Usuario } from '../../clases/usuario';
 })
 export class GrillaUsuariosComponent implements OnInit {
 
-  @Input() listadoUsuarios: Usuario[];
+  @Input() listadoUsuarios: Usuario[] ;
   @Output() usuarioSeleccionado: EventEmitter<any> = new EventEmitter<any>();
 
   displayedColumns: string[] = ['id', 'email'];
-  dataSource;
-  constructor() {
-    this.dataSource = this.listadoUsuarios;
+  dataSource = [];
 
+  constructor() {
   }
 
   ngOnInit() {
+    this.dataSource = this.listadoUsuarios;
   }
 
   mostrarDetalles(usuario: Usuario) {

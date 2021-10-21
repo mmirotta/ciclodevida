@@ -25,15 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { GrillaPaisesComponent } from './componentes/grilla-paises/grilla-paises.component';
 
 // FIREBASE
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { ResaltarDirective } from './directivas/resaltar.directive';
 import { NegativoDirective } from './directivas/negativo.directive';
-import { PaisesComponent } from './pages/paises/paises.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
@@ -48,8 +48,7 @@ import { PaisesComponent } from './pages/paises/paises.component';
     GrillaPaisesComponent,
     DetallePaisComponent,
     ResaltarDirective,
-    NegativoDirective,
-    PaisesComponent
+    NegativoDirective
   ],
   imports: [
     BrowserModule,
@@ -66,7 +65,8 @@ import { PaisesComponent } from './pages/paises/paises.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MaterialFileInputModule // Input file
   ],
   providers: [MiservicioService, ],
   bootstrap: [AppComponent]

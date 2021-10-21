@@ -4,4 +4,10 @@ export class Usuario {
     email: string;
     pass: string;
     perfil: string;
+    foto: string;
+
+    constructor() {
+        this.perfil = 'usuario';
+        this.nombre = 'Prueba'
+    }
 }
