@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
 export class AuthService {
   isLoggedIn = false;
   redirectUrl: string;
+  usuarioLogueado = false;
 
   
   constructor(private afAuth: AngularFireAuth,
-              private router: Router) { }
+              private router: Router) { 
+                this.usuarioLogueado = JSON.parse(localStorage.getItem('usuario'));
+              }
 
   public async signIn(usuario: Usuario) {
     return this.afAuth.signInWithEmailAndPassword(usuario.email, usuario.pass);
